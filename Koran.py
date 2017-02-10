@@ -3,7 +3,8 @@ allwords = []
 file = open("koranShort.txt", "r")
 line = file.readline()
 while line != "":
-  
+  if line == "\n":
+    line = file.readline()
   line.rstrip()
   line = line.lower()
   words = line.split(" ")
@@ -14,22 +15,34 @@ while line != "":
   
   line = file.readline()
 
-print(allwords)
+file.close()
 
 
-
-
+w_file = open("allwords.txt", "w")
+unique_file = open("uniquewords.txt", "w")
+word_dict = {}
+for elt in allwords:
+  w_file.write(elt + "\n")
+  if elt in word_dict:
+    word_dict[elt] += 1
+  else:
+    word_dict[elt] = 1
+    unique_file.write(elt + "\n")
+    
+print(word_dict)
+w_file.close()
+unique_file.close()
 '''
-adict = {}
-adict["K"] = 1
-print(adict)
-letter = ""
-if letter in adict:
-  adict[letter] += 1
+word_dict = {}
+word_dict["K"] = 1
+print(word_dict)
+elt = ""
+if elt in word_dict:
+  word_dict[elt] += 1
 else:
-  adict[letter] = 1
+  word_dict[elt] = 1
 
-for key in adict.keys():
+for key in word_dict.keys():
   print(key.lower())
 '''
 
