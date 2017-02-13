@@ -8,6 +8,15 @@ void setup() { //<>//
   
 }
 
+void settings() {
+  w = displayWidth; 
+  h = displayHeight;
+  w = (int)(8 * w /9); 
+  h = (int)(8 * h /9);
+  size(w,h);
+
+}
+
 void draw() {
   
 }
