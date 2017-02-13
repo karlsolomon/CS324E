@@ -1,6 +1,5 @@
-//Myeongin, I did most of the code for the display. You just need to mess with the variable Fontsize and maybe spacing, and change the
-//colors. They are bad rn. If you need help, feel free to text me. Thanks, Dylan.
 String[] uniqueWords;
+PFont f;
 void setup() {
   size(700,600);
   uniqueWords = loadStrings("uniquewords.txt");
@@ -13,12 +12,15 @@ void mouseClicked() {
 }
 
 public void createWordCloud() {
-  int font_Size = 32;
+  f = createFont("Copperplate .ttf",32);
+  int indent = 1;
+  text (1,indent, 1);
   int words_width = 3;
-  int spacing = font_Size + 2; 
+  int spacing = 35; 
   int numOfNewLines = 1;
   fill(0);
-  textSize(font_Size);
+  textFont(f);
+  
   ArrayList<Integer> exceptions = new ArrayList<Integer>();
   while (spacing*numOfNewLines <= 600) {
     int index = (int)random(0, uniqueWords.length);
@@ -28,11 +30,11 @@ public void createWordCloud() {
     } 
     exceptions.add(index); 
     if (index % 3 == 0) { 
-      fill(255,0,0);
+      fill(183,7,7);
     } else if (index % 3 == 1) {
-      fill(0,255,0); 
+      fill(33,169,74); 
     } else {
-      fill(0,0,255);
+      fill(22,53,155);
     }
     String word = uniqueWords[index];
     
@@ -49,11 +51,7 @@ public void createWordCloud() {
 }
 
 void draw() {
-  background(255);
+  background(252,250,234);
   createWordCloud();
   
 }
-    
-
-    
-  
