@@ -1,6 +1,6 @@
 import re
 allwords = []
-file = open("koranShort.txt", "r")
+file = open("metamorphosis.txt", "r")
 line = file.readline()
 while line != "":
   if line == "\n":
@@ -32,17 +32,5 @@ for elt in allwords:
 print(word_dict)
 w_file.close()
 unique_file.close()
-'''
-word_dict = {}
-word_dict["K"] = 1
-print(word_dict)
-elt = ""
-if elt in word_dict:
-  word_dict[elt] += 1
-else:
-  word_dict[elt] = 1
 
-for key in word_dict.keys():
-  print(key.lower())
-'''
 
