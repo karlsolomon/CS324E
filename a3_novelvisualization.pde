@@ -13,8 +13,6 @@ void mouseClicked() {
 
 public void createWordCloud() {
   f = createFont("Copperplate .ttf",32);
-  int indent = 1;
-  text (1,indent, 1);
   int words_width = 3;
   int spacing = 35; 
   int numOfNewLines = 1;
@@ -29,14 +27,21 @@ public void createWordCloud() {
       continue;
     } 
     exceptions.add(index); 
-    if (index % 3 == 0) { 
+        
+    String word = uniqueWords[index];
+    char firstWord;
+    try {
+      firstWord = word.charAt(0);
+    } catch (StringIndexOutOfBoundsException e) {
+      continue;
+    }
+    if ((int)firstWord >= 97 && (int)firstWord <= 104) { 
       fill(183,7,7);
-    } else if (index % 3 == 1) {
+    } else if ((int)word.charAt(0) > 104 && (int)word.charAt(0) <= 113) {
       fill(33,169,74); 
     } else {
       fill(22,53,155);
     }
-    String word = uniqueWords[index];
     
     if (words_width + textWidth(word) > 697) {
       numOfNewLines += 1;
