@@ -1,4 +1,5 @@
-
+//Myeongin, I did most of the code for the display. You just need to mess with the variable Fontsize and maybe spacing, and change the
+//colors. They are bad rn. If you need help, feel free to text me. Thanks, Dylan.
 String[] uniqueWords;
 void setup() {
   size(700,600);
