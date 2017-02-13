@@ -1,0 +1,6 @@
+a3_novelvisualization
+
+a3_wordfrequency
+	Displays a logarithmic graph which shows a red dot at each point. A point corresponds to a word frequency and the number of words in the story metamorphosis that are used at exactly that frequency.
+	The X and Y axes are labeled and marked according to their scales.
+	This was interesting because we found a near-linear relationship once the frequencies and number of words were transformed to a log scale.
