@@ -14,7 +14,7 @@ void mouseClicked() {
 public void createWordCloud() {
   f = createFont("Copperplate .ttf",32);
   int words_width = 3;
-  int spacing = 35; 
+  int spacing = 34; 
   int numOfNewLines = 1;
   fill(0);
   textFont(f);
@@ -36,11 +36,11 @@ public void createWordCloud() {
       continue;
     }
     if ((int)firstWord >= 97 && (int)firstWord <= 104) { 
-      fill(183,7,7);
+      fill(#814D5B);
     } else if ((int)word.charAt(0) > 104 && (int)word.charAt(0) <= 113) {
-      fill(33,169,74); 
+      fill(#8D91A2); 
     } else {
-      fill(22,53,155);
+      fill(#093F67);
     }
     
     if (words_width + textWidth(word) > 697) {
@@ -60,3 +60,4 @@ void draw() {
   createWordCloud();
   
 }
+
