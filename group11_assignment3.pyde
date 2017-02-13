@@ -30,7 +30,7 @@ for elt in allwords:
     word_dict[elt] = 1
     unique_file.write(elt + "\n")
     
-#print(word_dict)
+
 w_file.close()
 unique_file.close()
 
@@ -42,11 +42,12 @@ for word, frequency in word_dict.items():
     else:
         frequency_dict[frequency] = 1
         
-    
+   
 f_file = open("wordfrequency.txt", "w")
-for frequency, numberOfWords in sorted(frequency_dict.iteritems()):
+for frequency, numberOfWords in sorted(frequency_dict.items()):
     s =  str(frequency) + ": " + str(numberOfWords) + "\n"
-    print s
+    
     f_file.write(s)
 
 f_file.close()
+
