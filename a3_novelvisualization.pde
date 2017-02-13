@@ -16,11 +16,11 @@ public void createWordCloud() {
   int font_Size = 32;
   int words_width = 3;
   int spacing = font_Size + 2; 
-  int numSpacing = 1;
+  int numOfNewLines = 1;
   fill(0);
   textSize(font_Size);
   ArrayList<Integer> exceptions = new ArrayList<Integer>();
-  while (spacing*numSpacing <= 600) {
+  while (spacing*numOfNewLines <= 600) {
     int index = (int)random(0, uniqueWords.length);
     
     if (exceptions.contains(index)) {
@@ -37,11 +37,11 @@ public void createWordCloud() {
     String word = uniqueWords[index];
     
     if (words_width + textWidth(word) > 697) {
-      numSpacing += 1;
+      numOfNewLines += 1;
       words_width = 3;
     
     } else { 
-      text(word, words_width, spacing*numSpacing);
+      text(word, words_width, spacing*numOfNewLines);
       words_width += textWidth(word) + 7;
     }
     
@@ -51,9 +51,9 @@ public void createWordCloud() {
 void draw() {
   background(255);
   createWordCloud();
- 
- 
   
 }
+    
+
     
   
