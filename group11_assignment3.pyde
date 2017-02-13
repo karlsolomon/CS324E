@@ -1,11 +1,11 @@
 import re
 allwords = []
-file = open("koranShort.txt", "r")
+file = open("metamorphosis.txt", "r")
 line = file.readline()
 while True:
-  line = file.readline()
   if(line == "\n"):
-   continue
+    line = file.readline()
+    continue
   if(line == ""):
     break
   line.rstrip()
@@ -14,6 +14,7 @@ while True:
   for string in words:
     string = re.findall('[a-z]+',string)
     allwords.append("".join(str(elt) for elt in string))
+  line = file.readline()
 
 file.close()
 
@@ -49,19 +50,3 @@ for frequency, numberOfWords in sorted(frequency_dict.iteritems()):
     f_file.write(s)
 
 f_file.close()
-            
-
-
-
-'''
-word_dict = {}
-word_dict["K"] = 1
-print(word_dict)
-elt = ""
-if elt in word_dict:
-  word_dict[elt] += 1
-else:
-  word_dict[elt] = 1
-for key in word_dict.keys():
-  print(key.lower())
-'''
