@@ -1,0 +1,110 @@
+//I tried to start the next project. I found some useful codes and played around it.
+//There are lots of errors and still need more classes, but just some ideas!
+float ballX = 20;
+float ballY = 20;
+float ballR = 10;
+float dX = random(1, 2);
+float dY = random(1, 2);
+float paddle1X = 1;
+float paddle1Y = 1;
+float paddle1W = 10;
+float paddle1H = 100;
+float paddle2X = 789;
+float paddle2Y = 1;
+float paddle2W = 10;
+float paddle2H = 100;
+ 
+void setup() {
+  size(800, 800);
+}
+
+void reset() {
+  ballX = 20;
+  ballY = random(20,780);
+  ballR = 10;
+  dX = 4.5;
+  dY = 4.5;
+}
+
+void draw() {
+  background(255, 255, 255);
+  ellipse(ballX, ballY, 2 * ballR, 2 * ballR);
+  fill(255,255,100);
+  rect(paddle1X, paddle1Y, paddle1W, paddle1H);
+  rect(paddle2X, paddle2Y, paddle2W, paddle2H);
+ 
+  if (EndOfGame()) {
+    fill(255, 0, 0, 100);
+    rect(0, 0, width, height);
+    textSize(100);
+    text("GAME OVER",100,400);
+    fill(255,102,30);
+  }
+  if (collision()) {
+    dX = -dX; 
+  }
+  if (ballLeft() < 0) {
+    dX = -dX; 
+  }
+  if (ballBottom() > height) {
+    dY = -dY; 
+  }
+  if (ballTop() < 0) {
+    dY = -dY; 
+  }
+ 
+  ballX = ballX + dX;
+  ballY = ballY + dY;
+}
+boolean EndOfGame(){
+  boolean returnV = false;
+  if (ballLeft() <= 0 || ballRight() >= width){
+    returnV = true;
+  }
+  return (returnV);
+}
+  
+boolean collision() {
+  boolean returnValue = false;
+  if ((ballLeft() <= paddle1X + paddle1W) && (ballRight() >= paddle1X + paddle1W + ballR)) {
+    if ((ballBottom() >= paddle1Y) && (ballTop() <= paddle1Y + paddle1H)) {
+      returnValue = true;
+    }
+  }
+  else if ((ballRight() >= paddle2X) && (ballLeft() <= paddle2X + paddle2W)) {
+    if ((ballBottom() >= paddle2Y) && (ballTop() <= paddle2Y + paddle2H)) {
+      returnValue = true;
+    }
+  }
+  return (returnValue);
+}
+float ballLeft() {
+  return (ballX-ballR);
+}
+float ballRight() {
+  return (ballX + ballR);
+}
+float ballTop() {
+  return (ballY-ballR);
+}
+float ballBottom() {
+  return (ballY + ballR);
+}
+void keyPressed() {
+  if (key == CODED) {
+    if (keyCode == UP) {
+      paddle2Y = paddle2Y-25;
+    } else if (keyCode == DOWN) {
+      paddle2Y = paddle2Y +25;
+    }
+  }
+  if (key == ' '){
+    reset();
+  }
+  if (key =='w'){
+    paddle1Y=paddle1Y-25;
+  }
+  else if (key =='s'){
+    paddle1Y=paddle1Y+25;
+  }
+}
